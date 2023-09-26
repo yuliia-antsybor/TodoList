@@ -1,0 +1,29 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: rgba(175, 47, 47, 0.15);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.todo__title {
+  font-size: 40px;
+}
+
+.todo__footer {}
+
