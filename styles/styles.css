@@ -10,6 +10,7 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -21,9 +22,23 @@ body {
   padding: 1rem;
 }
 
+.container__card {
+  background-color: rgb(207, 175, 175);
+  padding: 1rem;
+  outline: 2px solid transparent;
+  width: 700px;
+}
+/* як зробити його розміром з контент?? */
+
 .todo__title {
   font-size: 40px;
+  color: black;
 }
 
 .todo__footer {}
 
+.input__container input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+}
