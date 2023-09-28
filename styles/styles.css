@@ -22,8 +22,8 @@ body {
 }
 
 .container__card {
-  background-color: rgb(240, 219, 229);
-  padding: 1rem;
+  background-color: 	#FFFAFA;
+  width: 40px padding: 1rem;
   outline: 2px solid transparent;
   width: 700px;
 
@@ -42,7 +42,7 @@ body {
   font-family: 'Comfortaa', cursive;
   border: 1px;
   color: rgb(58, 56, 58);
-  background-color: rgb(240, 219, 229);
+  background-color: 	#FFFAFA;
   padding-top: 0.60rem;
   padding-bottom: 0.60rem;
   padding-left: 0.60rem;
@@ -76,8 +76,24 @@ body {
   text-align: right;
 }
 
+
 .input__container input {
-  padding: 10px;
+  padding: 16px 16px 16px 16px;
   width: 100%;
   border: none;
+}
+
+.input__container input[type="text"] {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: lowercase;
+}
+
+
+.todo__list li {
+  padding: 16px;
+  background-color:	#FFFAFA;
+  list-style-type: none;
+  border: 0.1px solid rgba(180, 0, 117, 0.103);
+
 }
