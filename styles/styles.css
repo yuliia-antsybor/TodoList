@@ -9,33 +9,72 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+  font-family: 'Comfortaa', cursive;
   -webkit-font-smoothing: antialiased;
 }
 
 .container {
   min-height: 100vh;
-  background-color: rgba(175, 47, 47, 0.15);
+  background-color: rgb(247, 237, 242);
   display: flex;
   justify-content: center;
   padding: 1rem;
 }
 
 .container__card {
-  background-color: rgb(207, 175, 175);
+  background-color: rgb(240, 219, 229);
   padding: 1rem;
   outline: 2px solid transparent;
   width: 700px;
+
 }
-/* як зробити його розміром з контент?? */
 
 .todo__title {
-  font-size: 40px;
-  color: black;
+  font-size: 65px;
+  color: rgb(203, 12, 133);
 }
 
-.todo__footer {}
+.todo__filters {
+  text-align: center;
+}
+
+.filter-button {
+  font-family: 'Comfortaa', cursive;
+  border: 1px;
+  color: rgb(58, 56, 58);
+  background-color: rgb(240, 219, 229);
+  padding-top: 0.60rem;
+  padding-bottom: 0.60rem;
+  padding-left: 0.60rem;
+  padding-right: 0.60rem;
+}
+
+
+.filter-button:hover {
+  transition: 0.7s;
+  outline-color: transparent;
+  outline-style: groove;
+  box-shadow: rgb(203, 12, 133);
+}
+
+.todo__count {
+  display: flex;
+  align-items: center;
+}
+
+.todo__footer {
+  border: #000000;
+  display: flex;
+  padding: 0.6rem;
+}
+
+.todo__footer-col {
+  width: 33.3%;
+}
+
+.todo__clear {
+  text-align: right;
+}
 
 .input__container input {
   padding: 10px;
