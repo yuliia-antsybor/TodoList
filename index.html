@@ -16,13 +16,15 @@
 
     <div class="todo">
       <h1 class="todo__title">todos</h1>
+
       <div class="container__card">
         <div class="input__container">
-          <input type="text" class="input__text" placeholder="What needs to be?" />
+          <input type="text" class="input__text" id="inputData" placeholder="What needs to be here?"/>
         </div>
-        <div class="inputs">
-          <ul class="todo__list">
-            <li class="todo__item todo__item--completed">
+
+        <div class="inputs" id="typeInput">
+          <ul class="todo__list" id="listInput">
+            <!-- <li class="todo__item todo__item--completed">
               <input type="checkbox" id="item1">
               <label for="item1">First one</label>
             </li>
@@ -36,11 +38,12 @@
             </li>
             <li class="todo__item todo__item--completed">
               <input type="checkbox" id="item4">
-              <label for="item4">Fourth one</label>
-            </li>
+              <label for="item4">Fourth one </label>
+            </li> -->
           </ul>
 
         </div>
+
         <div class="todo__footer">
           <div class="todo__footer-col todo__count">
             1 item left

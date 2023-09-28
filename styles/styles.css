@@ -16,14 +16,15 @@ body {
 .container {
   min-height: 100vh;
   background-color: rgb(247, 237, 242);
+  background: linear-gradient(#FFFAFA, rgba(203, 12, 133, 0.53));
   display: flex;
   justify-content: center;
   padding: 1rem;
 }
 
 .container__card {
-  background-color: 	#FFFAFA;
-  width: 40px padding: 1rem;
+  background-color: #FFFAFA;
+  width: 40px;
   outline: 2px solid transparent;
   width: 700px;
 
@@ -42,7 +43,7 @@ body {
   font-family: 'Comfortaa', cursive;
   border: 1px;
   color: rgb(58, 56, 58);
-  background-color: 	#FFFAFA;
+  background-color: #FFFAFA;
   padding-top: 0.60rem;
   padding-bottom: 0.60rem;
   padding-left: 0.60rem;
@@ -92,11 +93,23 @@ body {
 
 .todo__list li {
   padding: 16px;
-  background-color:	#FFFAFA;
+  background-color: #FFFAFA;
   list-style-type: none;
-  border: 0.1px solid rgba(180, 0, 117, 0.103);
+  border-bottom:  1px solid rgba(213, 67, 162, 0.139);
+
 
 }
- .todo__item--completed {
 
- }
+.todo__item {
+  background-image: ;
+}
+
+.todo__item--completed {
+  text-decoration: line-through;
+}
+
+@media (max-width: 430px) {
+  .todo__item {
+    height: 100px;
+  }
+}
