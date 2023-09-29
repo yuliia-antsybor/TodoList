@@ -44,7 +44,7 @@ todoBody.addEventListener('click', (e) => {
     console.log(parent.dataset.key, todos[parent.dataset.key])
   }
 
-=
+
 })
 
 
