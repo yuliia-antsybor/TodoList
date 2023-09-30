@@ -6,8 +6,9 @@ const filterCompleted = document.getElementById('todo__item--completed');
 
 function createTodoHTML(todo, index) {
   return `<li class="todo__item" data-key="${index}">
-    <input type="checkbox" id="todo-${index}">
+    <input type="checkbox" What needs to be here? id="todo-${index}">
     <label for="todo-${index}">${todo.name}</label>
+    <button class="custom-button"> delete </button>
   </li>`
 }
 
