@@ -117,20 +117,34 @@ body {
   background-color: #FFFAFA;
   list-style-type: none;
   border-bottom: 1px solid rgba(213, 67, 162, 0.139);
-
-
-}
-
-.todo__item {
-  background-image: ;
 }
 
 .checked {
   text-decoration: line-through;
 }
 
+.todo__checkbox {
+  margin-right: 10px;
+}
+
+
 @media (max-width: 430px) {
   .todo__item {
     height: 100px;
   }
+}
+
+.delete-btn {
+  margin-left: auto;
+  transition-duration: 0.8s;
+  cursor: pointer;
+  fill: red;
+  background: none;
+  border: none;
+
+}
+
+.todo__item {
+  display: flex;
+  align-items: center;
 }

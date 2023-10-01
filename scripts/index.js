@@ -1,6 +1,5 @@
 //свторили пустий масив в яки будемо додавати дані з інпута
 let todos = [];
-let currentFilter = 'all';
 
 const inputElement = document.getElementById('inputData');
 
@@ -13,29 +12,45 @@ const clearCompletedButton = document.getElementById('clearCompleted');
 
 const storageKey = 'todos';
 
-//функція динамічно додає елементи, на onclick змінює статус checked || unchecked
+
+//function dynamically adds elements onclick and change status: checked || unchecked
 function createTodoHTML(todo, index) {
   return `<li class="todo__item ${todo.completed && 'checked'}">
     <input
+      class="todo__checkbox"
       onclick="updateStatus(${index})"
       type="checkbox" ${todo.completed && 'checked'}
       id="todo-${index}"
     >
     <label for="todo-${index}">${todo.name}</label>
+    <button class="delete-btn" onclick="deleteItem(${index})">
+      <svg xmlns="http://www.w3.org/2000/svg" id="svgDelete" data-name="Isolation Mode" viewBox="0 0 24 24"
+      width="20" height="20"><polygon points="19.061 7.061 16.939 4.939 12 9.879 7.061 4.939
+      4.939 7.061 9.879 12 4.939 16.939 7.061 19.061 12 14.121 16.939 19.061 19.061 16.939 14.121 12 19.061 7.061"/>
+      </svg>
+    </button>
   </li>`
 }
 
-
-//функція що змінює статус елементів якщо статус completed || !completed
-function updateStatus(index) {
-  todos[index].completed = !todos[index].completed;
-  writeToStorage(todos);
-  renderTodos(todos);
+function updateTodos(todoList){
+  writeToStorage(todoList);
+  renderTodos(todoList);
   updatesCount();
 }
 
+//changing status of list if it's completed || !completed
+function updateStatus(index) {
+  todos[index].completed = !todos[index].completed;
+  updateTodos(todos);
+}
 
-//Відтворює todo items
+// Remove elements with splice method(by index)
+function deleteItem(index) {
+  todos.splice(index, 1);
+  updateTodos(todos);
+}
+
+//rendering to to items
 function renderTodos(todoList) {
   todoBody.innerHTML = '';
 
@@ -44,20 +59,18 @@ function renderTodos(todoList) {
   })
 }
 
-//ф-я показує скільки елементів, який треба виконати залишилось
+//function show us how many tasks left to do
 function updatesCount() {
   const incompletedTasks = todos.filter(todos => !todos.completed).length;
   todoCount.innerHTML = `${incompletedTasks} items left`
 }
 
-//подія на клік, що видаляє завершені завдання
+//onclick event that delete completed tasks
 function clearCompleted() {
   todos = todos.filter((todo) => !todo.completed);
-  writeToStorage(todos);
-  renderTodos(todos);
-  updatesCount();
+  updateTodos(todos);
 }
-
+//add functionality to our filter buttons(completed, active, all)
 function filterTodos(e) {
   const action = e.target.dataset.action;
   let filteredTodos;
@@ -87,7 +100,7 @@ clearCompletedButton.addEventListener('click', clearCompleted);
 
 [...filterButtons].forEach((button => button.addEventListener('click', filterTodos)));
 
-// при натисненні на Enter додаються нові елементи, якщо інпут пустий,
+// pressing "Enter" key adds new elements if the input is empty
 inputElement.addEventListener("keyup", (e) => {
   if ((e.key === 'Enter' || e.keyCode === 13) && e.target.value.trim() !== '') {
     const todo = {
@@ -96,12 +109,9 @@ inputElement.addEventListener("keyup", (e) => {
     }
 
 
-    //додаємо об'єкти в масив todos
     todos.push(todo);
-    writeToStorage(todos);
-    renderTodos(todos);
-    updatesCount();
-    //очистили поле інтупа після натиснення ентер
+    updateTodos(todos);
+    //clearing input field
     e.target.value = '';
   }
 });
@@ -110,7 +120,9 @@ inputElement.addEventListener("keyup", (e) => {
 function init() {
   todos = JSON.parse(localStorage.getItem(storageKey)) || [];
   renderTodos(todos);
+  updatesCount();
 }
 
 init();
+
 
