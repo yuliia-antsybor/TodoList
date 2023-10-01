@@ -23,25 +23,7 @@
         </div>
 
         <div class="inputs" id="typeInput">
-          <ul class="todo__list" id="listInput">
-            <!-- <li class="todo__item todo__item--completed">
-              <input type="checkbox" id="item1">
-              <label for="item1">First one</label>
-            </li>
-            <li class="todo__item todo__item--completed">
-              <input type="checkbox" id="item2">
-              <label for="item2">Second one</label>
-            </li>
-            <li class="todo__item todo__item--completed">
-              <input type="checkbox" id="item3">
-              <label for="item3">Third one</label>
-            </li>
-            <li class="todo__item todo__item--completed">
-              <input type="checkbox" id="item4">
-              <label for="item4">Fourth one </label>
-            </li> -->
-          </ul>
-
+          <ul class="todo__list" id="listInput"></ul>
         </div>
 
         <div class="todo__footer">
@@ -49,12 +31,12 @@
             <!-- items left -->
           </div>
           <div class="todo__footer-col todo__filters">
-            <button class="filter-button filter-button--active">All</button>
-            <button class="filter-button">Active</button>
-            <button class="filter-button">Completed</button>
+            <button class="filter-button js-filter" data-action="all">All</button>
+            <button class="filter-button js-filter" data-action="active">Active</button>
+            <button class="filter-button js-filter" data-action="completed">Completed</button>
           </div>
           <div class="todo__footer-col todo__clear">
-            <button class="filter-button">Clearing completed</button>
+            <button class="filter-button" id="clearCompleted">Clearing completed</button>
           </div>
         </div>
       </div>

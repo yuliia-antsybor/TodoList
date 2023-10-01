@@ -1,14 +1,21 @@
+//свторили пустий масив в яки будемо додавати дані з інпута
+let todos = [];
+let currentFilter = 'all';
+
+const inputElement = document.getElementById('inputData');
+
 const todoBody = document.getElementById("listInput");
-const todos = []; //свторили пустий масив в яки будемо додавати дані з інпута
-const inputElement = document.getElementById('inputData');//доступились до плейсхолдера за айді і вивели в змінну
-const newElements = document.getElementById('list'); // доступились по айді до списку  вивели в змінну
 const todoItem = document.getElementsByClassName('todo__item');
 const todoCount = document.getElementById('counter')
-const filtersContainer = document.querySelector('.todo__filters');// для фільтрів
+
+const filterButtons = document.getElementsByClassName('js-filter');
+const clearCompletedButton = document.getElementById('clearCompleted');
+
+const storageKey = 'todos';
 
 //функція динамічно додає елементи, на onclick змінює статус checked || unchecked
 function createTodoHTML(todo, index) {
-  return `<li class="todo__item ${todo.completed && 'checked'}" data-key="${index}">
+  return `<li class="todo__item ${todo.completed && 'checked'}">
     <input
       onclick="updateStatus(${index})"
       type="checkbox" ${todo.completed && 'checked'}
@@ -18,25 +25,67 @@ function createTodoHTML(todo, index) {
   </li>`
 }
 
-/* <button class="custom-button"> delete</button> */
-
 
 //функція що змінює статус елементів якщо статус completed || !completed
 function updateStatus(index) {
   todos[index].completed = !todos[index].completed;
-  renderTodos();
+  writeToStorage(todos);
+  renderTodos(todos);
   updatesCount();
 }
 
 
-//?
-function renderTodos() {
+//Відтворює todo items
+function renderTodos(todoList) {
   todoBody.innerHTML = '';
 
-  todos.forEach((item, index) => {
+  todoList.forEach((item, index) => {
     todoBody.innerHTML += createTodoHTML(item, index)
   })
 }
+
+//ф-я показує скільки елементів, який треба виконати залишилось
+function updatesCount() {
+  const incompletedTasks = todos.filter(todos => !todos.completed).length;
+  todoCount.innerHTML = `${incompletedTasks} items left`
+}
+
+//подія на клік, що видаляє завершені завдання
+function clearCompleted() {
+  todos = todos.filter((todo) => !todo.completed);
+  writeToStorage(todos);
+  renderTodos(todos);
+  updatesCount();
+}
+
+function filterTodos(e) {
+  const action = e.target.dataset.action;
+  let filteredTodos;
+
+  switch (action) {
+    case 'all':
+      filteredTodos = todos;
+      break;
+    case 'active':
+      filteredTodos = todos.filter(todo => !todo.completed);
+      break;
+    case 'completed':
+      filteredTodos = todos.filter(todo => todo.completed);
+      break;
+  }
+
+  renderTodos(filteredTodos);
+}
+
+function writeToStorage(todoList) {
+  localStorage.setItem(storageKey, JSON.stringify(todoList));
+}
+
+// Attach event listeners
+
+clearCompletedButton.addEventListener('click', clearCompleted);
+
+[...filterButtons].forEach((button => button.addEventListener('click', filterTodos)));
 
 // при натисненні на Enter додаються нові елементи, якщо інпут пустий,
 inputElement.addEventListener("keyup", (e) => {
@@ -49,30 +98,19 @@ inputElement.addEventListener("keyup", (e) => {
 
     //додаємо об'єкти в масив todos
     todos.push(todo);
-    renderTodos();
+    writeToStorage(todos);
+    renderTodos(todos);
     updatesCount();
     //очистили поле інтупа після натиснення ентер
-    e.target.value = " ";
-
+    e.target.value = '';
   }
 });
 
-todoBody.addEventListener('click', (e) => {
-  const target = e.target;
-  const parent = target.parentNode;
-
-  if (parent.className !== 'todo__item') return;
-
-  if (target.tagName === 'INPUT') {
-    console.log(parent.dataset.key, todos[parent.dataset.key])
-  }
-
-})
-//ф-я показує скільки елементів, який треба виконати залишилось
-function updatesCount() {
-  const incompletedTasks = todos.filter(todos => !todos.completed).length;
-  todoCount.innerHTML = `${incompletedTasks} items left`
-  console.log("updatesCount", todoCount);
+// Initialize todo list from local storage
+function init() {
+  todos = JSON.parse(localStorage.getItem(storageKey)) || [];
+  renderTodos(todos);
 }
 
+init();
 
