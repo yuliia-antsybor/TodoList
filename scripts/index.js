@@ -1,4 +1,3 @@
-//свторили пустий масив в яки будемо додавати дані з інпута
 let todos = [];
 
 const inputElement = document.getElementById('inputData');
