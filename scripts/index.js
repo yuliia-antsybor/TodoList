@@ -62,7 +62,7 @@ function renderTodos(todoList) {
 //function show us how many tasks left to do
 function updatesCount() {
   const incompletedTasks = todos.filter(todos => !todos.completed).length;
-  todoCount.innerHTML = `${incompletedTasks} items left`
+  todoCount.innerHTML = `${incompletedTasks} tasks left`
 }
 
 //onclick event that delete completed tasks
