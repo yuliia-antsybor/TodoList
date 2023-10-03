@@ -1,6 +1,6 @@
 
 Portfolio Front-End Developer
-project: # TodoList
+project: #TodoList
 link: https://yuliia-antsybor.github.io/TodoList/
 Tools:
 - HTML5
